@@ -116,6 +116,37 @@ fyne package -os linux    # or: darwin, windows
 
 ---
 
+## 2a. Distributing to end users — build-time vs. runtime dependencies
+
+**A pre-built Conduit executable runs on end-user machines without them installing
+any of the packages in Section 1.** Those are *development* (`-dev`) packages —
+headers and linker stubs needed **only on the machine that compiles** Conduit
+(Fyne uses cgo and links OpenGL/X11 at build time). End users never install them.
+
+What a *running* binary needs are the **runtime** shared libraries, which already
+ship with any graphical operating system:
+
+| Target OS | Runtime dependency | User must install anything? |
+|-----------|--------------------|-----------------------------|
+| **macOS** | OpenGL + Cocoa frameworks (part of macOS) | **No** — self-contained `.app`/binary. |
+| **Windows** | OpenGL from the graphics driver | **No** — standalone `.exe`. |
+| **Linux (desktop)** | `libGL.so.1`, `libX11`, `libXcursor`, `libXrandr`, `libXinerama`, `libXi` — present on every X11/Wayland desktop | **No** — already provided by the desktop. |
+
+So macOS and Windows builds are effectively dependency-free, and a Linux build
+runs on any normal desktop because it links against the *runtime* libraries
+(e.g. `libgl1`, `libx11-6`), **not** the `-dev` packages.
+
+**Caveats:**
+
+- **One binary per OS.** Because of cgo you build each platform's binary on that
+  platform. To produce all three from a single machine, use
+  [`fyne-cross`](https://github.com/fyne-io/fyne-cross) (Docker-based).
+- **Minimal/headless Linux** (bare containers with no desktop) lack even the
+  runtime GL/X11 libraries — but such a host cannot display a GUI anyway. For a
+  desktop end user this never applies.
+
+---
+
 ## 3. Where Conduit stores data
 
 Conduit keeps per-user state under **`~/.conduit/`**:
