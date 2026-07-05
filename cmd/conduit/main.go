@@ -1,11 +1,7 @@
 // Command conduit is the entry point for the Conduit universal protocol
-// workbench.
-//
-// This is currently a bootstrap launcher: it constructs the shared AppContext
-// (event bus, cache, protocol registry, environment service), opens the history
-// store, and reports what is wired. The Fyne desktop shell (window, sidebar
-// connection tree, tabbed workspace) is layered on top of this same AppContext
-// in the next phase — see TASKS.md.
+// workbench: it wires the shared services (event bus, cache, registry,
+// environment, history, connection store, credential vault) and launches the
+// Fyne desktop shell.
 package main
 
 import (
@@ -14,19 +10,18 @@ import (
 
 	"github.com/geekpratyush/conduit/internal/core"
 	"github.com/geekpratyush/conduit/internal/protocol/httpc"
+	"github.com/geekpratyush/conduit/internal/security"
+	"github.com/geekpratyush/conduit/internal/ui"
 )
 
 func main() {
-	fmt.Println("Conduit — One Console. Every Protocol.")
-
 	app := core.Bootstrap()
 
-	// Register available protocol connectors. Each protocol package contributes
-	// a Descriptor; the shell lists these in the sidebar and builds connectors
-	// on demand. More are wired in as their views land (see TASKS.md).
+	// Register available protocol connectors. More are wired in as their views
+	// land (see TASKS.md).
 	app.Registry.Register(httpc.Descriptor())
 
-	// Attach the history store; a failure here must not stop the app.
+	// History store (best-effort; the app still runs without it).
 	if path, err := core.ConfigPath("history.db"); err == nil {
 		if hs, err := core.OpenHistory(path); err == nil {
 			app.History = hs
@@ -36,10 +31,21 @@ func main() {
 		}
 	}
 
-	protocols := app.Registry.Descriptors()
-	fmt.Printf("Core services ready: eventbus, cache, env, registry (%d protocols registered).\n", len(protocols))
-	if app.History != nil {
-		fmt.Println("History store: open (SQLite + FTS5).")
+	// Connection-profile store (seeds public samples on first run).
+	var store *core.ConnectionStore
+	if path, err := core.ConfigPath("connections.json"); err == nil {
+		if s, err := core.OpenConnectionStore(path); err == nil {
+			store = s
+		} else {
+			fmt.Fprintf(os.Stderr, "warning: connection store unavailable: %v\n", err)
+		}
 	}
-	fmt.Println("Desktop shell (Fyne) not yet wired — run `go test ./internal/...` to exercise the core.")
+
+	// Credential vault (created/unlocked from the status-bar control).
+	var vault *security.CredentialVault
+	if path, err := core.ConfigPath("vault.enc"); err == nil {
+		vault = security.NewVault(path)
+	}
+
+	ui.Run(app, store, vault)
 }

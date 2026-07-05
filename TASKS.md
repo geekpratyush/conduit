@@ -20,10 +20,15 @@
 - [x] `internal/core`: `EventBus` (typed pub/sub) — with unsubscribe
 - [x] `internal/core`: `AppContext` (hand-rolled DI container) + config-dir helper (`~/.conduit`)
 - [x] `internal/core`: LRU cache with pre-registered regions + tests
-- [ ] `cmd/conduit`: minimal Fyne shell — window, menu bar, sidebar connection tree,
-      tabbed workspace, collapsible log panel, status bar, accelerators
-- [ ] `internal/ui/theme`: custom Conduit theme (Midnight dark + Daylight light palettes) + toggle
-- [ ] App builds and launches (`go run ./cmd/conduit`) showing an empty themed workspace
+- [x] Fyne shell (`internal/ui`) — window, menu bar, **colour-coded sidebar connection tree**
+      (grouped by domain, tinted by semantic colour), tabbed workspace (DocTabs), collapsible
+      log panel, status bar with vault indicator, Ctrl+Shift+T accelerator
+- [x] `internal/ui/theme`: custom Conduit theme (**Midnight dark + Daylight light** palettes) +
+      toggle + semantic domain colours
+- [x] App builds and launches (`go run ./cmd/conduit`) showing the themed workspace;
+      **`cmd/preview` renders both themes to PNG via Fyne's software renderer** (verified)
+- [x] Vault UI: master-password / unlock dialog + status-bar lock toggle (first cut)
+- [x] New-connection dialog + per-connection tab with live "Test connection" (drives connector)
 - [x] `README.md` + `RUN.md` (RUN.md documents per-OS Fyne build prerequisites)
 
 ## Phase 1 — Foundation (vault, cert manager, profiles, env, history)
@@ -120,6 +125,14 @@
 
 ## Progress log
 
+- **2026-07-05 (cont. 2)** — **Fyne shell is live.** Built the Conduit theme (Midnight dark +
+  Daylight light + semantic domain colours), the main window, the colour-coded sidebar
+  (grouped/tinted by domain, fed by the profile store), DocTabs workspace, log panel, status
+  bar with a vault lock control, a new-connection dialog, and a per-connection tab whose "Test
+  connection" button drives the registered connector end-to-end. The app builds, launches, and
+  keeps its window open on the display. Added `cmd/preview`, which rasterizes the exact shell +
+  theme to PNG using Fyne's software renderer (no display/GL needed) — used to verify both
+  themes render correctly.
 - **2026-07-05 (cont.)** — Added the connection-profile store (JSON, vault-ref secrets,
   seeded samples) and the **REST connector backend** (`internal/protocol/httpc`): methods,
   enabled params/headers, raw/JSON/form bodies, timing+size, and Basic/Bearer/API-key auth —
