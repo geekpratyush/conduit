@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 660" width="980" height="660" font-family="Inter, 'Segoe UI', system-ui, sans-serif" role="img" aria-label="Conduit theme mockup — Midnight dark theme">
+  <defs>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="send" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- page backdrop -->
+  <rect x="0" y="0" width="980" height="660" fill="#05070A"/>
+
+  <!-- ===== App window (Midnight dark theme) ===== -->
+  <rect x="20" y="20" width="940" height="524" rx="16" fill="#0D1117" stroke="#2D3540" stroke-width="1"/>
+
+  <!-- Title bar -->
+  <path d="M20 36 a16 16 0 0 1 16 -16 h908 a16 16 0 0 1 16 16 v24 h-940 z" fill="#161B22"/>
+  <circle cx="42" cy="40" r="5" fill="#F43F5E"/><circle cx="60" cy="40" r="5" fill="#F59E0B"/><circle cx="78" cy="40" r="5" fill="#22C55E"/>
+  <!-- mini mark -->
+  <g transform="translate(104,26)">
+    <rect x="0" y="0" width="28" height="28" rx="8" fill="url(#flow)"/>
+    <g stroke="#F8FAFC" stroke-width="1.7" stroke-linecap="round">
+      <line x1="14" y1="14" x2="14" y2="7"/><line x1="14" y1="14" x2="7.5" y2="20"/><line x1="14" y1="14" x2="20.5" y2="20"/>
+    </g>
+    <g fill="#F8FAFC"><circle cx="14" cy="6" r="2"/><circle cx="7" cy="20.5" r="2"/><circle cx="21" cy="20.5" r="2"/></g>
+    <circle cx="14" cy="14" r="3" fill="#0D1117"/><circle cx="14" cy="14" r="1.3" fill="#F8FAFC"/>
+  </g>
+  <text x="142" y="45" font-size="16" font-weight="700" fill="#E6EDF3">Conduit</text>
+  <!-- title-bar right cluster -->
+  <rect x="690" y="28" width="150" height="24" rx="12" fill="#1F2630" stroke="#2D3540"/>
+  <text x="706" y="44" font-size="12" fill="#8B98A9">Search connections…  ⌘K</text>
+  <rect x="852" y="28" width="46" height="24" rx="12" fill="#1F2630" stroke="#2D3540"/>
+  <text x="864" y="44" font-size="13" fill="#EAB308">🔒</text>
+  <rect x="906" y="28" width="34" height="24" rx="12" fill="#1F2630" stroke="#2D3540"/>
+  <text x="915" y="44" font-size="13" fill="#8B98A9">◐</text>
+
+  <!-- ===== Sidebar: color-coded connection tree ===== -->
+  <rect x="20" y="60" width="228" height="484" fill="#161B22"/>
+  <line x1="248" y1="60" x2="248" y2="544" stroke="#2D3540"/>
+  <text x="40" y="86" font-size="11" font-weight="700" fill="#8B98A9" letter-spacing="1.5">CONNECTIONS</text>
+
+  <!-- each node is TINTED BY ITS PROTOCOL DOMAIN so the tree reads by colour -->
+  <g font-size="13" fill="#E6EDF3">
+    <!-- HTTP & Web — Signal Blue -->
+    <text x="40" y="112" font-size="10" font-weight="700" fill="#3B82F6" letter-spacing="1.2">HTTP &amp; WEB</text>
+    <circle cx="46" cy="132" r="4" fill="#3B82F6"/><text x="60" y="136">api-gateway · REST</text>
+    <circle cx="46" cy="156" r="4" fill="#3B82F6"/><text x="60" y="160">events · WebSocket</text>
+    <circle cx="46" cy="180" r="4" fill="#3B82F6"/><text x="60" y="184">graph · GraphQL</text>
+    <!-- Messaging — Stream Amber -->
+    <text x="40" y="208" font-size="10" font-weight="700" fill="#F59E0B" letter-spacing="1.2">MESSAGING</text>
+    <circle cx="46" cy="228" r="4" fill="#F59E0B"/><text x="60" y="232">prod-cluster · Kafka</text>
+    <circle cx="46" cy="252" r="4" fill="#F59E0B"/><text x="60" y="256">telemetry · MQTT</text>
+    <!-- Databases — Data Emerald -->
+    <text x="40" y="280" font-size="10" font-weight="700" fill="#10B981" letter-spacing="1.2">DATABASES</text>
+    <circle cx="46" cy="300" r="4" fill="#10B981"/><text x="60" y="304">orders-db · Postgres</text>
+    <circle cx="46" cy="324" r="4" fill="#10B981"/><text x="60" y="328">catalog · MongoDB</text>
+    <!-- Files — Transfer Violet -->
+    <text x="40" y="352" font-size="10" font-weight="700" fill="#8B5CF6" letter-spacing="1.2">FILES &amp; OBJECTS</text>
+    <circle cx="46" cy="372" r="4" fill="#8B5CF6"/><text x="60" y="376">backups · SFTP</text>
+    <circle cx="46" cy="396" r="4" fill="#8B5CF6"/><text x="60" y="400">assets · S3</text>
+    <!-- Directory — Beacon Teal -->
+    <text x="40" y="424" font-size="10" font-weight="700" fill="#14B8A6" letter-spacing="1.2">DIRECTORY</text>
+    <circle cx="46" cy="444" r="4" fill="#14B8A6"/><text x="60" y="448">corp-ad · LDAP</text>
+    <!-- AI — Neural Magenta -->
+    <text x="40" y="476" font-size="10" font-weight="700" fill="#EC4899" letter-spacing="1.2">AI</text>
+    <circle cx="46" cy="496" r="4" fill="#EC4899"/><text x="60" y="500">tools-server · MCP</text>
+    <circle cx="46" cy="520" r="4" fill="#EC4899"/><text x="60" y="524">claude · LLM</text>
+  </g>
+
+  <!-- ===== Main workspace ===== -->
+  <!-- Tab bar: each tab carries a top accent bar in its domain colour -->
+  <g>
+    <rect x="248" y="60" width="712" height="34" fill="#0D1117"/>
+    <!-- active tab (REST, blue) -->
+    <rect x="260" y="62" width="176" height="32" rx="6" fill="#1F2630"/>
+    <rect x="260" y="62" width="176" height="3" rx="1.5" fill="#3B82F6"/>
+    <text x="276" y="83" font-size="12.5" fill="#E6EDF3" font-weight="600">GET  /v1/users</text>
+    <!-- inactive tab (Kafka, amber) -->
+    <rect x="446" y="64" width="180" height="30" rx="6" fill="#161B22"/>
+    <rect x="446" y="64" width="180" height="3" rx="1.5" fill="#F59E0B"/>
+    <text x="462" y="84" font-size="12.5" fill="#8B98A9">orders ▸ consume</text>
+    <text x="642" y="84" font-size="16" fill="#8B98A9">+</text>
+  </g>
+
+  <!-- Request bar -->
+  <g transform="translate(264,112)">
+    <rect x="0" y="0" width="60" height="34" rx="8" fill="#3B82F6"/>
+    <text x="14" y="22" font-size="13" font-weight="700" fill="#F8FAFC">GET</text>
+    <rect x="70" y="0" width="470" height="34" rx="8" fill="#161B22" stroke="#2D3540"/>
+    <text x="84" y="22" font-size="12.5" font-family="'JetBrains Mono', ui-monospace, monospace" fill="#E6EDF3">https://${HOST}/v1/users?active=true</text>
+    <rect x="552" y="0" width="96" height="34" rx="8" fill="url(#send)"/>
+    <text x="576" y="22" font-size="13" font-weight="700" fill="#0D1117">Send ▸</text>
+  </g>
+
+  <!-- sub-tabs -->
+  <g transform="translate(264,160)" font-size="12" fill="#8B98A9">
+    <text x="0" y="12" fill="#E6EDF3" font-weight="600">Params</text><text x="70" y="12">Headers</text>
+    <text x="150" y="12">Body</text><text x="215" y="12">Auth</text><text x="270" y="12">Tests</text>
+    <line x1="0" y1="20" x2="52" y2="20" stroke="#22D3EE" stroke-width="2"/>
+  </g>
+
+  <!-- Response card -->
+  <g transform="translate(264,192)">
+    <rect x="0" y="0" width="648" height="150" rx="10" fill="#161B22" stroke="#2D3540"/>
+    <!-- status pill (success = emerald) -->
+    <rect x="16" y="16" width="74" height="24" rx="12" fill="#0D1117" stroke="#22C55E"/>
+    <circle cx="30" cy="28" r="4" fill="#22C55E"/><text x="40" y="32" font-size="12" font-weight="700" fill="#22C55E">200 OK</text>
+    <!-- latency chip (info) -->
+    <rect x="100" y="16" width="70" height="24" rx="12" fill="#0D1117" stroke="#38BDF8"/>
+    <text x="114" y="32" font-size="12" fill="#38BDF8">142 ms</text>
+    <!-- size chip -->
+    <rect x="180" y="16" width="76" height="24" rx="12" fill="#0D1117" stroke="#2D3540"/>
+    <text x="194" y="32" font-size="12" fill="#8B98A9">3.4 KB</text>
+    <text x="560" y="32" font-size="11" fill="#8B98A9">JSON ▾</text>
+    <!-- JSON body -->
+    <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12">
+      <text x="18" y="66" fill="#8B98A9">{</text>
+      <text x="34" y="86"><tspan fill="#22D3EE">"id"</tspan><tspan fill="#8B98A9">: </tspan><tspan fill="#F59E0B">42</tspan><tspan fill="#8B98A9">,</tspan></text>
+      <text x="34" y="106"><tspan fill="#22D3EE">"name"</tspan><tspan fill="#8B98A9">: </tspan><tspan fill="#22C55E">"Ada Lovelace"</tspan><tspan fill="#8B98A9">,</tspan></text>
+      <text x="34" y="126"><tspan fill="#22D3EE">"active"</tspan><tspan fill="#8B98A9">: </tspan><tspan fill="#EC4899">true</tspan></text>
+      <text x="18" y="146" fill="#8B98A9">}</text>
+    </g>
+  </g>
+
+  <!-- ===== Palette strip (the "colour buttons / palette" panel) ===== -->
+  <text x="20" y="582" font-size="13" font-weight="700" fill="#E6EDF3">Semantic palette — every component is coloured by what it means</text>
+
+  <!-- semantic swatches -->
+  <g font-size="10" font-family="'JetBrains Mono', ui-monospace, monospace">
+    <g transform="translate(20,596)">
+      <rect width="128" height="52" rx="10" fill="#3B82F6"/><text x="12" y="24" font-size="11" font-weight="700" font-family="Inter, system-ui, sans-serif" fill="#F8FAFC">HTTP &amp; Web</text><text x="12" y="42" fill="#F8FAFC" opacity="0.85">#3B82F6</text>
+    </g>
+    <g transform="translate(156,596)">
+      <rect width="128" height="52" rx="10" fill="#F59E0B"/><text x="12" y="24" font-size="11" font-weight="700" font-family="Inter, system-ui, sans-serif" fill="#0D1117">Messaging</text><text x="12" y="42" fill="#0D1117" opacity="0.8">#F59E0B</text>
+    </g>
+    <g transform="translate(292,596)">
+      <rect width="128" height="52" rx="10" fill="#10B981"/><text x="12" y="24" font-size="11" font-weight="700" font-family="Inter, system-ui, sans-serif" fill="#0D1117">Databases</text><text x="12" y="42" fill="#0D1117" opacity="0.8">#10B981</text>
+    </g>
+    <g transform="translate(428,596)">
+      <rect width="128" height="52" rx="10" fill="#8B5CF6"/><text x="12" y="24" font-size="11" font-weight="700" font-family="Inter, system-ui, sans-serif" fill="#F8FAFC">Files/Objects</text><text x="12" y="42" fill="#F8FAFC" opacity="0.85">#8B5CF6</text>
+    </g>
+    <g transform="translate(564,596)">
+      <rect width="128" height="52" rx="10" fill="#14B8A6"/><text x="12" y="24" font-size="11" font-weight="700" font-family="Inter, system-ui, sans-serif" fill="#0D1117">Directory</text><text x="12" y="42" fill="#0D1117" opacity="0.8">#14B8A6</text>
+    </g>
+    <g transform="translate(700,596)">
+      <rect width="128" height="52" rx="10" fill="#EC4899"/><text x="12" y="24" font-size="11" font-weight="700" font-family="Inter, system-ui, sans-serif" fill="#F8FAFC">AI / MCP</text><text x="12" y="42" fill="#F8FAFC" opacity="0.85">#EC4899</text>
+    </g>
+    <g transform="translate(836,596)">
+      <rect width="124" height="52" rx="10" fill="#EAB308"/><text x="12" y="24" font-size="11" font-weight="700" font-family="Inter, system-ui, sans-serif" fill="#0D1117">Security</text><text x="12" y="42" fill="#0D1117" opacity="0.8">#EAB308</text>
+    </g>
+  </g>
+</svg>

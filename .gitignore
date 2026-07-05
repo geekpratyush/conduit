@@ -1,0 +1,21 @@
+# Binaries
+/conduit
+/cmd/conduit/conduit
+*.exe
+*.test
+*.out
+
+# Build / tooling
+/dist/
+/bin/
+*.prof
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Local runtime data (user config dir is ~/.conduit, but ignore any strays)
+*.db
+*.enc
+.env
