@@ -38,8 +38,9 @@
 - [x] `internal/core`: connection-profile store → `~/.conduit/connections.json`;
       bundled public sample endpoints (deletable); CRUD + persistence tests
 - [x] Saved-connection secrets stored as vault refs (no plaintext) — enforced by test
-- [ ] `internal/security`: certificate manager — generate self-signed RSA/ECDSA, PKCS#10 CSR,
-      import/export PEM/DER/PKCS12, keystore persist, expiry watchdog + UI
+- [~] `internal/security`: certificate manager — **generate self-signed RSA/ECDSA, PKCS#10 CSR,
+      PEM parse/encode, colour-coded expiry watchdog (30/7/1-day)** done & tested (7 tests);
+      DER/PKCS12 import-export, keystore persist + UI pending
 
 ## Phase 2 — Help system
 
