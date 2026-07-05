@@ -33,14 +33,27 @@ Conduit is **pure-Go, end to end**: one language, one static binary, native widg
 
 ## Status
 
-Conduit is under active development. The shared core is built and unit-tested; the desktop shell
-and protocol views are being layered on top. See [`TASKS.md`](./TASKS.md) for the live,
-phase-by-phase tracker and [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the one-page map.
+Conduit is under active development, and **the app runs**. The shared core, the security layer,
+and the REST connector are built and unit-tested, and the Fyne desktop shell is live with light
+and dark themes. Protocol views are being layered on top. See [`TASKS.md`](./TASKS.md) for the
+live, phase-by-phase tracker and [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the one-page map.
 
-**Done so far:** the `Connector` SPI + registry, event bus, DI container, LRU cache, the
-`${VAR}` environment resolver (with `.env`, defaults, nesting, escaping, secret masking), a
-SQLite + FTS5 history store (search / favorites / replay), and an AES-256-GCM credential vault
-(PBKDF2, 200k iters) — all with passing tests.
+**Done so far:**
+- **Shell (Fyne):** main window, **Midnight (dark) + Daylight (light)** themes with a
+  Ctrl+Shift+T toggle, a **colour-coded connection sidebar** (grouped and tinted by protocol
+  domain), a tabbed workspace, a log panel, and a status-bar vault control.
+- **Core:** `Connector` SPI + registry, event bus, DI container, LRU cache, the `${VAR}`
+  environment resolver (`.env`, defaults, nesting, escaping, secret masking), a SQLite + FTS5
+  history store (search / favorites / replay), and a connection-profile store.
+- **Security:** an AES-256-GCM credential vault (PBKDF2, 200k iters) and a certificate manager
+  (self-signed RSA/ECDSA, CSR, PEM parse, expiry watchdog).
+- **Protocols:** a REST connector (methods, params/headers/body, Basic/Bearer/API-key auth,
+  timing) — backend complete and tested; the request/response view is next.
+
+All of the above ships with passing unit tests.
+
+**Preview the UI without a display:** `go run ./cmd/preview <outdir>` renders both themes to PNG
+via Fyne's software renderer. Launch the live app with `go run ./cmd/conduit`.
 
 ## Feature map (target)
 

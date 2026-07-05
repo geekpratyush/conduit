@@ -122,10 +122,10 @@ conduit/                            (single Go module: github.com/geekpratyush/c
 
 | Phase | Theme | Status |
 |-------|-------|--------|
-| **0** | Project scaffold (module, packages, Fyne shell skeleton, core infra) | 🟡 In progress |
-| **1** | Foundation: vault, cert manager, profiles, env vars, history | 🟡 Vault + env + history + cache built & tested |
+| **0** | Project scaffold (module, packages, Fyne shell, core infra) | ✅ Done — shell runs (themes, sidebar, tabs, log, status bar) |
+| **1** | Foundation: vault, cert manager, profiles, env vars, history | ✅ Essentially done — all backends built & tested; some UIs first-cut |
 | **2** | Help system (built early to guide everything) | ⬜ Not started |
-| **3** | HTTP core: REST, WebSocket, SSE, GraphQL | ⬜ Not started |
+| **3** | HTTP core: REST, WebSocket, SSE, GraphQL | 🟡 REST backend done & tested; **REST view is the next task** |
 | **4** | Kafka client (producer/consumer/admin) | ⬜ Not started |
 | **5** | Enterprise messaging (MQTT, RabbitMQ, JMS, cloud SQS/SNS) | ⬜ Not started |
 | **6** | Advanced HTTP (gRPC, GraphQL depth) | ⬜ Not started |
@@ -135,9 +135,14 @@ conduit/                            (single Go module: github.com/geekpratyush/c
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started
 
-**Overall: early build — the shared core (event bus, cache, env resolver, history, vault) is
-implemented and unit-tested; the Fyne shell and first protocol view come next.** See
-[`TASKS.md`](./TASKS.md) for the live checkbox tracker.
+**Overall: the app runs.** The shared core (event bus, cache, env resolver, history, vault,
+cert manager, profile store) and the REST connector are implemented and unit-tested, and the
+Fyne shell is live with Midnight/Daylight themes, a colour-coded sidebar, tabs, a log panel, and
+a vault control. **Next: the full REST request/response view (Phase 3).** See
+[`TASKS.md`](./TASKS.md) for the live checkbox tracker and exact resume point.
+
+**Preview the UI without a display:** `go run ./cmd/preview <outdir>` renders both themes to PNG
+via Fyne's software renderer. Run the live app with `go run ./cmd/conduit`.
 
 ---
 

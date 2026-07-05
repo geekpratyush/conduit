@@ -7,7 +7,19 @@
 
 **Legend:** `[x]` done · `[~]` in progress / first cut · `[ ]` not started
 
-**Resume point:** _Phase 0 — wiring the Fyne shell skeleton on top of the completed core services._
+**Resume point (next session, START HERE):** Phases 0 and 1 are essentially complete — the
+Fyne shell runs (Midnight/Daylight themes, colour-coded sidebar, tabs, log, vault control) and
+the shared core + security + REST backend are built and unit-tested. **Next task: build the
+full REST request/response view (Phase 3)** — turn the per-connection tab into a Postman-style
+panel: method + URL bar, Params/Headers/Body/Auth tabs, a Send button, and a response viewer
+(status pill, latency/size chips, pretty-printed body). The REST *backend* already exists and is
+tested (`internal/protocol/httpc`) — this is the UI/view layer on top of it, wired into
+`internal/ui`. Verify visually via `go run ./cmd/preview <dir>` (software renderer → PNG) or
+`go run ./cmd/conduit` (live). After REST view: WebSocket + SSE + GraphQL views, then Phase 4 (Kafka).
+
+**How to see the UI without a display:** `go run ./cmd/preview /path/to/outdir` writes
+`conduit-midnight-dark.png` + `conduit-daylight-light.png` using Fyne's software renderer — the
+reliable way to preview the shell here (the live GL window can't be screenshotted in this env).
 
 ---
 
