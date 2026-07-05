@@ -24,7 +24,7 @@
       tabbed workspace, collapsible log panel, status bar, accelerators
 - [ ] `internal/ui/theme`: custom Conduit theme (Midnight dark + Daylight light palettes) + toggle
 - [ ] App builds and launches (`go run ./cmd/conduit`) showing an empty themed workspace
-- [ ] `README.md` (done) + `RUN.md`
+- [x] `README.md` + `RUN.md` (RUN.md documents per-OS Fyne build prerequisites)
 
 ## Phase 1 — Foundation (vault, cert manager, profiles, env, history)
 

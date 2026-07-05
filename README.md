@@ -58,7 +58,10 @@ SQLite + FTS5 history store (search / favorites / replay), and an AES-256-GCM cr
 
 - **Go 1.26+**
 - A graphical display (X11/Wayland/macOS/Windows) — Conduit is a desktop GUI
-- Fyne's build prerequisites (a C toolchain + system OpenGL/X11 dev headers on Linux)
+- A C toolchain + system OpenGL/X11 dev headers (Linux). On Debian/Ubuntu:
+  `sudo apt-get install -y gcc libgl1-mesa-dev xorg-dev`
+
+See **[`RUN.md`](./RUN.md)** for the full per-OS prerequisite list and troubleshooting.
 
 ## Quick start
 
@@ -74,6 +77,7 @@ go run ./cmd/conduit          # launch the workbench (once the shell lands)
 | File | Purpose |
 |------|---------|
 | `README.md` | This file — overview, quick start, contact |
+| `RUN.md` | Build/run instructions + **per-OS prerequisites** to install |
 | `PROJECT_PLAN.md` | One-page map: what/how/where-it-stands |
 | `TASKS.md` | **Living** phase-by-phase build tracker |
 | `THEME.md` | Visual identity — logo, semantic palette, component treatment |
