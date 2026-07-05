@@ -13,12 +13,18 @@ import (
 	"os"
 
 	"github.com/geekpratyush/conduit/internal/core"
+	"github.com/geekpratyush/conduit/internal/protocol/httpc"
 )
 
 func main() {
 	fmt.Println("Conduit — One Console. Every Protocol.")
 
 	app := core.Bootstrap()
+
+	// Register available protocol connectors. Each protocol package contributes
+	// a Descriptor; the shell lists these in the sidebar and builds connectors
+	// on demand. More are wired in as their views land (see TASKS.md).
+	app.Registry.Register(httpc.Descriptor())
 
 	// Attach the history store; a failure here must not stop the app.
 	if path, err := core.ConfigPath("history.db"); err == nil {

@@ -35,9 +35,9 @@
 - [x] `internal/core`: `HistoryStore` — SQLite + FTS5 (`modernc.org/sqlite`), favorites,
       replay fetch; **add/FTS-search/favorite/replay test**
 - [ ] Vault UI: master-password dialog, auto-lock timer, status-bar lock toggle
-- [ ] `internal/core`: connection-profile store → `~/.conduit/connections.json`;
-      bundled public sample endpoints (deletable); multi-method auth model
-- [ ] Saved-connection secrets stored as vault refs (no plaintext)
+- [x] `internal/core`: connection-profile store → `~/.conduit/connections.json`;
+      bundled public sample endpoints (deletable); CRUD + persistence tests
+- [x] Saved-connection secrets stored as vault refs (no plaintext) — enforced by test
 - [ ] `internal/security`: certificate manager — generate self-signed RSA/ECDSA, PKCS#10 CSR,
       import/export PEM/DER/PKCS12, keystore persist, expiry watchdog + UI
 
@@ -50,10 +50,11 @@
 
 ## Phase 3 — HTTP core (REST, WebSocket, SSE, GraphQL)
 
-- [ ] `internal/protocol/httpc`: REST connector — all methods, params/headers/body, timing,
-      HTTP/2, JSON pretty-print
-- [ ] REST auth: Basic / Bearer / API-key / OAuth2 (client-creds + auth-code/PKCE) /
-      AWS SigV4 / Digest / HMAC
+- [~] `internal/protocol/httpc`: REST connector — all methods, enabled params/headers,
+      raw/JSON/form body, timing + size; HTTP/2 via default transport; **8 unit tests** (httptest).
+      Registered into the shell registry. _(JSON pretty-print is a view concern.)_
+- [~] REST auth: **Basic / Bearer / API-key (header+query)** done & tested;
+      OAuth2 (client-creds + auth-code/PKCE) / AWS SigV4 / Digest / HMAC pending
 - [ ] REST view: params/headers/body/auth tabs, colour-coded status, response viewers, history
 - [ ] REST: cookie jar, response assertions (Tests tab), waterfall timeline, code-gen
 - [ ] WebSocket connector + view (connect/disconnect, timestamped log, send bar)
@@ -118,6 +119,12 @@
 
 ## Progress log
 
+- **2026-07-05 (cont.)** — Added the connection-profile store (JSON, vault-ref secrets,
+  seeded samples) and the **REST connector backend** (`internal/protocol/httpc`): methods,
+  enabled params/headers, raw/JSON/form bodies, timing+size, and Basic/Bearer/API-key auth —
+  8 httptest-backed unit tests, registered into the shell registry. Env checks: Docker 29 +
+  Compose v5 available for live verification; graphical display present; Fyne needs
+  `libgl1-mesa-dev` + `xorg-dev` installed before the shell can build.
 - **2026-07-05** — Project created. Scaffolded the module + package skeleton. Established the
   brand (**Conduit**, "One Console. Every Protocol.") with an original SVG logo mark, wordmark,
   and a full theme mockup; documented the semantic palette in `THEME.md`. Implemented and
